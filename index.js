@@ -7,18 +7,16 @@
  */
 import englishToBrailleLiteralSet from './english-to-braille.js';
 
-function convert(inputText) {
- var i;
-  let inputText = document.getElementById('sourceLangText').value;
-  let splitInput = inputText.split("");
-
+function convert() {
+  let i;
+  const inputText = document.getElementById('sourceLangText').value;
+  const splitInput = inputText.split('');
   const BrailleLiteralSet = new Map(englishToBrailleLiteralSet);
-  for (i=0; i<inputText.length; i++) {
-
-    splitInput[i]=BrailleLiteralSet.get(splitInput[i]);
-    }
-  document.getElementById('targetLangText').innerHTML = splitInput.join("");
+  for (i = 0; i < inputText.length; i += 1) {
+    splitInput[i] = BrailleLiteralSet.get(splitInput[i]);
   }
+  document.getElementById('targetLangText').innerHTML = splitInput.join('');
+}
 window.onload = function () {
   document.getElementById('btnConvertEnglishToBraille').addEventListener('click', convert);
 };
